@@ -1,0 +1,48 @@
+{
+  "nodes": {
+    "bash-logger": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1757973953,
+        "narHash": "sha256-y3g95moZHlAKoo9oqXKkYX389GfMd1/j4LTse0VkEns=",
+        "owner": "Jatsekku",
+        "repo": "bash-logger",
+        "rev": "5a9356fc88e7150c2e3fff5319b024fe9b121431",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Jatsekku",
+        "repo": "bash-logger",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1757745802,
+        "narHash": "sha256-hLEO2TPj55KcUFUU1vgtHE9UEIOjRcH/4QbmfHNF820=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "bash-logger": "bash-logger",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

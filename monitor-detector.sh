@@ -1,7 +1,6 @@
 #!/bin/bash
 set +o errexit
 
-readonly BASH_LOGGER_SH="/etc/bash-logger.sh"
 MONITOR_DETECTOR_SH="$(realpath "$0")"
 
 readonly JSON_RULES_FILE="/etc/monitor-detector/rules.json"

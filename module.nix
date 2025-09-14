@@ -6,7 +6,7 @@
   ...
 }:
 let
-  cfg = config.myNixOS.monitor-detector;
+  cfg = config.services.monitor-detector;
 
   bash-logger-pkg = inputs.bash-logger.packages.${pkgs.system}.default;
   monitor-detector = import ./package.nix {
@@ -15,7 +15,7 @@ let
   };
 in
 {
-  options.myNixOS.monitor-detector = {
+  options.services.monitor-detector = {
     enable = lib.mkEnableOption "Enable monitor-detector DRM hook";
 
     rules = lib.mkOption {
