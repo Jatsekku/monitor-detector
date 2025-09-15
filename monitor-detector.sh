@@ -4,11 +4,13 @@ set +o errexit
 MONITOR_DETECTOR_SH="$(realpath "$0")"
 
 readonly JSON_RULES_FILE="/etc/monitor-detector/rules.json"
+readonly BASH_LOGGER_LOG_FILE="/etc/monitor-detector/monitor-detector.log"
 
 # Source logger module
 # shellcheck disable=SC1090,SC1091
 source "${BASH_LOGGER_SH}" 
 logger_register_module "monitor-detector" "$LOG_LEVEL_DBG"
+logger_set_log_file "$BASH_LOGGER_LOG_FILE"
 
 __match_edid() {
     local -r edid_data="$1"
@@ -143,6 +145,7 @@ monitor_detector_udev_entry() {
         source '$BASH_LOGGER_SH'
         source '$MONITOR_DETECTOR_SH'
         logger_register_module 'monitor-detector-detached' '$LOG_LEVEL_DBG'
+        logger_set_log_file '$BASH_LOGGER_LOG_FILE'
         __main
     "
 }
