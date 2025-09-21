@@ -66,7 +66,7 @@ in
 
     # Bind monitor-detector script to DRM subsystem
     services.udev.extraRules = lib.concatMapStrings (action: ''
-      SUBSYSTEM=="drm", ACTION=="${action}", ENV{HOTPLUG}=="1", RUN+="${lib.getExe monitor-detector}"
+      SUBSYSTEM=="drm", ACTION=="${action}", RUN+="${lib.getExe monitor-detector}"
     '') cfg.actions;
   };
 }
