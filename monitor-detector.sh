@@ -140,7 +140,6 @@ __main() {
 }
 
 monitor_detector_udev_entry() {
-    sleep 1
     setsid bash -c "
         source '$BASH_LOGGER_SH'
         source '$MONITOR_DETECTOR_SH'
