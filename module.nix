@@ -18,6 +18,18 @@ in
   options.services.monitor-detector = {
     enable = lib.mkEnableOption "Enable monitor-detector DRM hook";
 
+    actions = lib.mkOption {
+      type = lib.types.listOf (
+        lib.types.enum [
+          "add"
+          "remove"
+          "change"
+        ]
+      );
+      default = [ "change" ];
+      description = "Udev actions that triggers monitor";
+    };
+
     rules = lib.mkOption {
       type = lib.types.listOf (
         lib.types.submodule {
@@ -53,8 +65,8 @@ in
     environment.etc."monitor-detector/rules.json".text = builtins.toJSON cfg.rules;
 
     # Bind monitor-detector script to DRM subsystem
-    services.udev.extraRules = ''
-      SUBSYSTEM=="drm", ACTION=="change", ENV{HOTPLUG}=="1", RUN+="${lib.getExe monitor-detector}"
-    '';
+    services.udev.extraRules = lib.concatMapStrings (action: ''
+      SUBSYSTEM=="drm", ACTION=="${action}", ENV{HOTPLUG}=="1", RUN+="${lib.getExe monitor-detector}"
+    '') cfg.actions;
   };
 }
